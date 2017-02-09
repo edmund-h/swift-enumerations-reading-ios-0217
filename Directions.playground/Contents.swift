@@ -34,13 +34,40 @@ enum Direction {
             return "RIGHT"
         }
     }
+    var change: (Int,Int) {
+        switch self {
+        case .up:
+            return (0,1)
+        case .down:
+            return (0,-1)
+        case .right:
+            return (1,0)
+        case .left:
+            return (-1,0)
+        }
+    }
 }
 
-let direction1 = Direction.up
-let direction2: Direction = .down
-var direction3: Direction = .right
+enum DiagonalDir{
+    case upRight, upLeft, downRight, downLeft
+    var change: (Int,Int) {
+        switch self {
+        case .upRight:
+            return (1,1)
+        case .downLeft:
+            return (-1,-1)
+        case .downRight:
+            return (1,-1)
+        case .upLeft:
+            return (-1,1)
+        }
+    }
+}
 
-let direction = Direction.left
+let direction1 = Direction.down
+var direction2 = Direction.up
+var direction3 = Direction.right
+    
 
 func playerDidMove(_ direction: Direction) {
     print("Player moved \(direction.excited)")
